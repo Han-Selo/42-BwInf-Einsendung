@@ -1,0 +1,34 @@
+for j in range(2, m+1):
+    print(crnt_arr, case)
+    # zurücksetzen der verwendeten Gatter für jede Zeile
+    usedGates = [False for _ in range(n)]
+
+    # aufteilen der Zeile basierend auf den Zeichen
+    zeile = [line for line in lines[j].split(" ") if line != ""]
+    # vorherige Zeile für die Überprüfung, ob ein "X" über dem Gatter ist
+    vorherige_zeile = [_ for _ in lines[j-1].split(" ") if _ != ""]
+    # Iteration über die Zeile
+    for k in range(0, len(zeile)):
+        # wenn das Zeichen kein X ist und das Gatter noch nicht verwendet wurde
+        if zeile[k] != "X":
+             # bedingung um zu schauen, ob ein "X" über dem Gatter ist, falls ja, vernachlässigen wir diesen Teil des Gatters
+                    
+            if usedGates[k] == False:
+                # NAND LOGIC GATE
+                if zeile[k] == "W":
+                    # schauen, wo der andere Eingang des Gatters ist
+                    if k - 1 >= 0:
+                        if zeile[k-1] == "W" and usedGates[k-1] == False:                                
+                            gate_logic(k=k, arr=crnt_arr,
+                                                id="W", leftRight="l")
+                                        
+                            usedGates[k] = True
+                            usedGates[k-1] = True
+
+
+                    if k + 1 <= len(zeile):
+                        if zeile[k+1] == "W" and usedGates[k+1] == False:
+                            gate_logic(k=k, arr=crnt_arr,
+                                                   id="W", leftRight="r")
+                            usedGates[k] = True
+                            usedGates[k+1] = True

@@ -1,0 +1,4 @@
+13 3
+X  X  X  X  Q1 Q2 Q3 Q4 Q5 X  X  X  X
+W  B  W  r  R  B  W  B  r  r  R  r  r
+X  X  X  X  L1 L2 L3 L4 L5 X  X  X  X
